@@ -1,5 +1,5 @@
 <?php
-include('dbcon.php');
+include('main/dbcon.php');
 dbcon();
 session_start();
 $username = $_POST['username'];
@@ -12,7 +12,6 @@ $row_user = mysql_fetch_array($query_user);
 
 if ($num_row_user > 0) {
 	$_SESSION['user'] = $row_user['id_user'];
-
 	echo 'true';
 } else {
 	echo 'false';

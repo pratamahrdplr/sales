@@ -1,0 +1,2 @@
+[11-Nov-2021 11:55:49 Asia/Jakarta] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/plrc7162/public_html/sales/dbcon.php on line 9
+[11-Nov-2021 12:00:12 Asia/Jakarta] PHP Deprecated:  mysql_connect(): The mysql extension is deprecated and will be removed in the future: use mysqli or PDO instead in /home/plrc7162/public_html/sales/dbcon.php on line 9
