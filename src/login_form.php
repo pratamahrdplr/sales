@@ -39,10 +39,7 @@
 			});
 		</script>
 
-
-
-
-		<form id="login_form1" class="form-signin" method="post">
+		<form action="login.php" id="login_form1" class="form-signin" method="post">
 			<h3 class="form-signin-heading">
 				<i class="icon-lock"></i> Login Dulu
 			</h3>
