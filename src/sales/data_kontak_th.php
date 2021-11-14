@@ -48,17 +48,14 @@
 
 
               if (($tanggal_input_awal == '') and ($tanggal_input_sampai == '')) {
-                $kontak_query = mysql_query("select * from tb_kontak_all where id_user = '$row_user[id_user]'") or die(mysql_error());
+                $kontak_query = mysql_query("select * from tb_kontak_all where id_user = '$session_user'") or die(mysql_error());
               } else {
 
 
-                $kontak_query = mysql_query("select * from tb_kontak_all where  id_user = '$row_user[id_user]' and  DATE_FORMAT(tanggal_telp,'%m/%d/%Y')  BETWEEN '$tanggal_input_awal' AND '$tanggal_input_sampai' AND status_kontak ='telah dihubungi' ") or die(mysql_error());
+                $kontak_query = mysql_query("select * from tb_kontak_all where  id_user = '$session_user' and  DATE_FORMAT(tanggal_telp,'%m/%d/%Y')  BETWEEN '$tanggal_input_awal' AND '$tanggal_input_sampai' AND status_kontak ='telah dihubungi' ") or die(mysql_error());
               }
 
               while ($row = mysql_fetch_array($kontak_query)) {
-
-                $user_query = mysql_query("select * from tb_user where id_user = '$row[id_user]'  ") or die(mysql_error());
-                $row_user = mysql_fetch_array($user_query);
               ?>
                 <tr>
                   <td><?php echo $row['nama_kontak']; ?><br /><?php echo $row['alamat_kontak']; ?></td>
