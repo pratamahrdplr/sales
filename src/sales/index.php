@@ -4,7 +4,6 @@ dbcon();
 include('session.php');
 
 error_reporting(0);
-
 ?>
 
 
@@ -171,7 +170,7 @@ error_reporting(0);
               <li class="">
 
                 <a href="javascript:;" class="user-profile dropdown-toggle" data-toggle="dropdown" aria-expanded="false">
-                  Tanggal :<?php echo $ora; ?> || <img src="images/icon.jpg" alt=""><?php echo $user_username; ?> [<?php echo $user_kota; ?>]
+                  Tanggal :<?php echo $ora; ?> || <img src="images/icon.jpg" alt=""><?php echo $user_username; ?>
                   <span class=" fa fa-angle-down"></span>
                 </a>
                 <ul class="dropdown-menu dropdown-usermenu animated fadeInDown pull-right">
@@ -200,35 +199,7 @@ error_reporting(0);
 
 
           <div class="row">
-            <?php
-            $admin_query = mysql_query("select * from tb_user where id_user = '$_SESSION[user]'") or die(mysql_error());
-            $row_admin = mysql_fetch_array($admin_query);
-            $data_pen = $row_admin['kota'];
-
-            if ($data_pen == 'surabaya') {
-              include('buka.php');
-            } elseif ($data_pen == 'SURABAYA') {
-              include('buka.php');
-            } elseif ($data_pen == 'probolinggo') {
-              include('buka.php');
-            } elseif ($data_pen == 'PROBOLINGGO') {
-              include('buka.php');
-            } elseif ($data_pen == 'semarang') {
-              include('buka2.php');
-            } elseif ($data_pen == 'SEMARANG') {
-              include('buka2.php');
-            } elseif ($data_pen == 'juwana') {
-              include('buka.php');
-            } elseif ($data_pen == 'JUWANA') {
-              include('buka.php');
-            } elseif ($data_pen == 'cirebon') {
-              include('buka3.php');
-            } elseif ($data_pen == 'CIREBON') {
-              include('buka3.php');
-            } elseif ($data_pen == 'all') {
-              include('buka.php');
-            }
-            ?>
+            <?php include('buka.php'); ?>
 
           </div>
 
@@ -237,7 +208,7 @@ error_reporting(0);
         <!-- footer content -->
         <footer>
           <div class="pull-right">
-            PT Pratama Langgeng Raya <a href="https://plrhsd.id"> - Bootstrap Admin Template by gentella</a>
+            PT Pratama Langgeng Raya<a href="https://plrhsd.id"> - Bootstrap Admin Template by gentella</a>
           </div>
           <div class="clearfix"></div>
         </footer>

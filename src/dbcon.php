@@ -12,13 +12,13 @@ function dbcon()
 
 function host()
 {
-	$h = "http://" . $_SERVER['HTTP_HOST'] . "/sales/";
+	$h = "http://" . $_SERVER['HTTP_HOST'] . "/sales";
 	return $h;
 }
 
 function hRoot()
 {
-	$url = $_SERVER['DOCUMENT_ROOT'] . "/sales/";
+	$url = $_SERVER['DOCUMENT_ROOT'] . "/sales";
 	return $url;
 }
 

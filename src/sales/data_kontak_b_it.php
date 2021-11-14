@@ -34,7 +34,6 @@
                 <th>Nama</th>
                 <th>Alamat</th>
                 <th>Kota</th>
-                <th>Provinsi</th>
                 <th>Kontak</th>
                 <th>Email</th>
                 <th>Purchasing</th>
@@ -46,7 +45,7 @@
               <!-----------------------------------Content------------------------------------>
               <?php
               $session_user = $_SESSION['user'];
-              $user_query = mysql_query("select * from tb_user where id_user = '$session_user'  ") or die(mysql_error());
+              $user_query = mysql_query("select * from tb_user where aktif=1 and id_user = '$session_user'  ") or die(mysql_error());
               $row_user = mysql_fetch_array($user_query);
 
               $kontak_query = mysql_query("select * from tb_kontak_all where id_user = '$row_user[id_user]' and status_kontak = 'belum dihubungi' and pembuat ='admin'") or die(mysql_error());
@@ -57,7 +56,6 @@
                   <td><?php echo $row['nama_kontak']; ?></td>
                   <td><?php echo $row['alamat_kontak']; ?></td>
                   <td><?php echo $row['kota_kontak']; ?></td>
-                  <td><?php echo $row['provinsi_kontak']; ?></td>
                   <td><?php echo $row['telepon_kontak']; ?></td>
                   <td><?php echo $row['email_kontak']; ?></td>
                   <td><?php echo $row['cp_kontak']; ?></td>
@@ -179,7 +177,7 @@
                                         $.jGrowl("Sebentar Sabar......", {
                                           sticky: true
                                         });
-                                        $.jGrowl("Welcome to Sistem Marketing PT.SBK", {
+                                        $.jGrowl("Welcome to Sistem Marketing PT.PLR", {
                                           header: 'Login Berhasil'
                                         });
                                         var delay = 1000;
@@ -187,7 +185,7 @@
                                           window.location = 'admin/index.php'
                                         }, delay);
                                       } else if (html == 'true') {
-                                        $.jGrowl("Welcome to Sistem Marketing PT.SBK", {
+                                        $.jGrowl("Welcome to Sistem Marketing PT.PLR", {
                                           header: 'Login Berhasil'
                                         });
                                         var delay = 1000;

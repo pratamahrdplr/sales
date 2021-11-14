@@ -43,41 +43,12 @@ var data = <?php echo json_encode($output); ?>;
                     </div>
                     <div class="form-group">
                       <label>Alamat</label>
-                      <input type="text" class="form-control" placeholder="Masukan Alamat..." name="alamat" value="" required>
+                      <input type="text" class="form-control" placeholder="Masukan Telp..." name="alamat" value="" required>
                     </div>
 					 <div class="form-group">
-                     <label>Provinsi</label>
-                      <select id="provinsi" name="provinsi">
-                <option value="">Pilih Provinsi</option>
-                <?php
-                $query = mysql_query("SELECT * FROM provinsi ORDER BY nama_provinsi");
-                while ($row = mysql_fetch_array($query)) {
-                ?>
-                    <option value="<?php echo $row['id_provinsi']; ?>">
-                        <?php echo $row['nama_provinsi']; ?>
-                    </option>
-                <?php
-                }
-                ?>
-            </select>
+                      <label>Kota</label>
+                      <input type="text" class="form-control" placeholder="Masukan Kota..." name="kota" value="" required>
                     </div>
-                     <div class="form-group">
-                     <label>Kota</label>
-                      <select id="kota" name="kota">
-                <option value="">Pilih Kota</option>
-                <?php
-                $query = mysql_query("SELECT * FROM kota INNER JOIN provinsi ON kota.id_provinsi = provinsi.id_provinsi ORDER BY nama_kota");
-                while ($row = mysql_fetch_array($query)) {
-                ?>
-                    <option id="kota" class="<?php echo $row['id_provinsi']; ?>" value="<?php echo $row['id_kota']; ?>">
-                        <?php echo $row['nama_kota']; ?>
-                    </option>
-                <?php
-                }
-                ?>
-            </select>
-                      </div>
-					 
 					<div class="form-group">
                       <label>Nama Purchasing</label>
                       <input type="text" class="form-control" placeholder="Masukan Nama Purchasing ..." name="cp" value="" required>
@@ -103,10 +74,4 @@ var data = <?php echo json_encode($output); ?>;
 
 
                   </form>
-                  <script src="jquery-1.10.2.min.js"></script>
-        <script src="jquery.chained.min.js"></script>
-        <script>
-            $("#kota").chained("#provinsi");
-            $("#kecamatan").chained("#kota");
-        </script>
   </div>

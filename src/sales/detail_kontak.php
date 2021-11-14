@@ -30,13 +30,7 @@
     <td><?php echo $row_detail['kota_kontak']; ?> </td>
   </tr>
   <tr>
-  
-  <td>Provinsi Pelanggan</td>
-       <td>:</td>
-    <td><?php echo $row_detail['provinsi_kontak']; ?> </td>
-    </tr>
-  <tr>
-        <td>CP Pelanggan</td>
+    <td>CP Pelanggan</td>
        <td>:</td>
     <td><?php echo $row_detail['cp_kontak']; ?> </td>
   </tr>

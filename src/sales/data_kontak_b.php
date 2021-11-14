@@ -6,18 +6,12 @@
         </div>
         <div class="x_content">
           <?php
-          if (isset($_POST)) {
-            $tanggal_input_awal = $_POST["tanggal_input_awal"];
-            $tanggal_input_sampai = $_POST["tanggal_input_sampai"];
-          } else {
-            $tanggal_input_awal = '';
-            $tanggal_input_sampai = '';
-          }
+          $tanggal_input_awal = $_POST["tanggal_input_awal"];
+          $tanggal_input_sampai = $_POST["tanggal_input_sampai"];
           ?>
           <p class="text-muted font-13 m-b-30">
           <div class="btn-group">
             <a class="btn btn-primary" href="?page=data_kontak"> Tracking </a>
-            <a class="btn btn-primary" href="?page=data_s"> Searching Data </a>
             <a class="btn btn-warning" href="?page=data_kontak_b"> Belum dihubungi </a>
             <a class="btn btn-primary" href="?page=data_kontak_th"> Telah dihubungi </a>
             <a class="btn btn-primary" href="?page=data_kontak_tl"> Telepon Ulang </a>
@@ -56,13 +50,13 @@
             <tbody>
               <!-----------------------------------Content------------------------------------>
               <?php
-
-              // print_r($_SESSION['user']); return;
-
+              $session_user = $_SESSION['user'];
+              $user_query = mysql_query("select * from tb_user where aktif=1 and id_user = '$session_user'") or die(mysql_error());
+              $row_user = mysql_fetch_array($user_query);
               if (($tanggal_input_awal == '') and ($tanggal_input_sampai == '')) {
-                $kontak_query = mysql_query("select * from tb_kontak_all where id_user = '" . $_SESSION['user'] . "' and status_kontak = 'belum dihubungi'") or die(mysql_error());
+                $kontak_query = mysql_query("select * from tb_kontak_all where id_user = '$row_user[id_user]' and status_kontak = 'belum dihubungi'") or die(mysql_error());
               } else {
-                $kontak_query = mysql_query("select * from tb_kontak_all where id_user = '" . $_SESSION['user'] . "'  AND DATE_FORMAT(tanggal_kontak,'%m/%d/%Y') BETWEEN '$tanggal_input_awal' AND '$tanggal_input_sampai' AND status_kontak = 'belum dihubungi' ") or die(mysql_error());
+                $kontak_query = mysql_query("select * from tb_kontak_all where id_user = '$row_user[id_user]'  AND DATE_FORMAT(tanggal_kontak,'%m/%d/%Y')  BETWEEN '$tanggal_input_awal' AND '$tanggal_input_sampai' AND status_kontak ='belum dihubungi' ") or die(mysql_error());
               }
 
               while ($row = mysql_fetch_array($kontak_query)) {
@@ -235,10 +229,20 @@
 
 
 
+
+
+
+
+
+
+
+
+
+
+
     <?php
 
               } ?>
-
     </tbody>
     </table>
 

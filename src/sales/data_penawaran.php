@@ -12,8 +12,9 @@
           <p class="text-muted font-13 m-b-30">
           <div class="btn-group">
             <a class="btn btn-primary" href="?page=data_kontak"> Tracking </a>
-            <a class="btn btn-primary" href="?page=data_s"> Searching Data </a>
+            <a class="btn btn-primary" href="?page=data_kontak_b"> Belum dihubungi </a>
             <a class="btn btn-primary" href="?page=data_kontak_th"> Telah dihubungi </a>
+            <a class="btn btn-primary" href="?page=data_kontak_tl"> Telepon Ulang </a>
             <a class="btn btn-warning" href="?page=data_penawaran"> Penawaran Anda</a>
             <a class="btn btn-primary" href="?page=data_po"> PO Anda</a>
             <a class="btn btn-primary" href="?page=data_kirim"> Pengiriman</a>
@@ -44,6 +45,7 @@
                 <th>Perusahan</th>
                 <th>Telepon</th>
                 <th>Fax</th>
+
                 <th>Harga</th>
                 <th>Pembayaran</th>
                 <th>Status</th>
@@ -57,7 +59,6 @@
 
                 $penawaran_query = mysql_query("select * from tb_penawaran  where id_user = '$session_user'") or die(mysql_error());
               } else {
-
                 $penawaran_query = mysql_query("select * from tb_penawaran where id_user = '$session_user'  AND DATE_FORMAT(tanggal_penawaran,'%m/%d/%Y')  BETWEEN '$tanggal_input_awal' AND '$tanggal_input_sampai'") or die(mysql_error());
               }
               while ($row = mysql_fetch_array($penawaran_query)) {
@@ -66,7 +67,7 @@
                 $row_kontak = mysql_fetch_array($kontak_query);
 
 
-                $user_query = mysql_query("select * from tb_user where id_user = '$session_user' ") or die(mysql_error());
+                $user_query = mysql_query("select * from tb_user where aktif=1 and id_user = '$session_user' ") or die(mysql_error());
                 $row_user = mysql_fetch_array($user_query);
               ?>
                 <tr>

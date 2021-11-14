@@ -12,8 +12,9 @@
           <p class="text-muted font-13 m-b-30">
           <div class="btn-group">
             <a class="btn btn-warning" href="?page=data_kontak"> Tracking </a>
-            <a class="btn btn-primary" href="?page=data_s"> Searching Data </a>
+            <a class="btn btn-primary" href="?page=data_kontak_b"> Belum dihubungi </a>
             <a class="btn btn-primary" href="?page=data_kontak_th"> Telah dihubungi </a>
+            <a class="btn btn-primary" href="?page=data_kontak_tl"> Telepon Ulang </a>
             <a class="btn btn-primary" href="?page=data_penawaran"> Penawaran Anda</a>
             <a class="btn btn-primary" href="?page=data_po"> PO Anda</a>
             <a class="btn btn-primary" href="?page=data_kirim"> Pengiriman</a>
@@ -39,11 +40,10 @@
               <?php
               $no = 0;
               $session_user = $_SESSION['user'];
-              $user_query = mysql_query("select * from tb_user where id_user = '$session_user' ") or die(mysql_error());
+              $user_query = mysql_query("select * from tb_user where aktif=1 and id_user = '$session_user' ") or die(mysql_error());
               $row_user = mysql_fetch_array($user_query);
 
               $kontak_query = mysql_query("select * from tb_kontak_all where id_user = '$session_user' ") or die(mysql_error());
-
 
               while ($row = mysql_fetch_array($kontak_query)) {
 
@@ -64,17 +64,17 @@
                       } else if ($row['status_kontak'] == 'tidak terhubung') {
                         echo '<div class="label label-danger"><i class="icon-ok"></i><strong>X</strong></div>';
                       } else if ($row['status_kontak'] == 'belum dihubungi') {
-                        //echo '<div class="label label-warning"><i class="icon-ok"></i><strong>X</strong></div>';
-                      ?>
-                      <a href="?page=telpon&id_kontak=<?php echo $row['id_kontak']; ?>" class="btn btn-primary btn-sm">Hubungi</a>
-                    <?php
+                        echo '<div class="label label-warning"><i class="icon-ok"></i><strong>X</strong></div>';
                       } else if ($row['status_kontak'] == 'telepon lagi') {
                         echo '<div class="label label-warning"><i class="icon-ok"></i><strong>Telepon Ulang</strong></div>';
                       } else {
                         echo '<div class="label label-warning"><i class="icon-remove-sign"></i><strong>Menunggu</strong></div>';
                       };
 
-                    ?>
+                      ?>
+
+
+
                   </td>
                   <td>
                     <?php
@@ -114,7 +114,10 @@
               } ?>
             </tbody>
           </table>
+
+
         </div>
+
 
 
         <script>

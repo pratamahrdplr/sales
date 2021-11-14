@@ -12,8 +12,9 @@
           <p class="text-muted font-13 m-b-30">
           <div class="btn-group">
             <a class="btn btn-primary" href="?page=data_kontak"> Tracking </a>
-            <a class="btn btn-primary" href="?page=data_s"> Searching Data </a>
+            <a class="btn btn-primary" href="?page=data_kontak_b"> Belum dihubungi </a>
             <a class="btn btn-primary" href="?page=data_kontak_th"> Telah dihubungi </a>
+            <a class="btn btn-primary" href="?page=data_kontak_tl"> Telepon Ulang </a>
             <a class="btn btn-primary" href="?page=data_penawaran"> Penawaran Anda</a>
             <a class="btn btn-warning" href="?page=data_po"> PO Anda</a>
             <a class="btn btn-primary" href="?page=data_kirim"> Pengiriman</a>
@@ -43,7 +44,6 @@
                 <th>Tanggal Kirim</th>
                 <th>Perusahan</th>
                 <th>Kota</th>
-                <th>Provinsi</th>
                 <th>Oat</th>
                 <th>Harga</th>
                 <th>Vol</th>
@@ -67,7 +67,7 @@
                 $row_kontak = mysql_fetch_array($kontak_query);
 
 
-                $user_query = mysql_query("select * from tb_user where id_user = '$session_user' ") or die(mysql_error());
+                $user_query = mysql_query("select * from tb_user where aktif=1 and id_user = '$session_user' ") or die(mysql_error());
                 $row_user = mysql_fetch_array($user_query);
               ?>
                 <tr>
@@ -76,7 +76,6 @@
                   <td><?php echo $row['tanggal_kirim']; ?></td>
                   <td><?php echo $row_kontak['nama_kontak']; ?><br /><?php echo $row_kontak['kota_kontak']; ?></td>
                   <td><?php echo $row_kontak['kota_kontak']; ?></td>
-                  <td><?php echo $row_kontak['provinsi_kontak']; ?></td>
                   <td><?php echo $row['grup_oat']; ?></td>
                   <td><?php echo $row['harga_po']; ?></td>
                   <td><?php echo $row['vol_po']; ?></td>

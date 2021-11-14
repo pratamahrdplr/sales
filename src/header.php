@@ -7,7 +7,7 @@ dbcon();
 
 <head>
 	<title>SISTEM MARKETING PT. PLR</title>
-	<meta name="description" content="PT PRATAMA LANGGENG RAYA">
+	<meta name="description" content="PT PLR">
 	<meta name="author" content="Nizar">
 	<meta charset="UTF-8">
 
