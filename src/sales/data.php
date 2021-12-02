@@ -2,17 +2,17 @@
 include('../dbcon.php');
 dbcon()
 $term = trim(strip_tags($_GET['term']));
-  
+ï¿½ï¿½
 $qstring = "SELECT * FROM tb_kontak_all WHERE nama_anime LIKE '".$term."%'";
 //query database untuk mengecek tabel anime 
 $result = mysql_query($qstring);
-  
+ï¿½ï¿½
 while ($row = mysql_fetch_array($result))
 {
-    $row['value']=htmlentities(stripslashes($row['nama_kontak']));
-    $row['id']=(int)$row['id_kontak'];
+ï¿½ï¿½ï¿½ï¿½$row['value']=htmlentities(stripslashes($row['nama_kontak']));
+ï¿½ï¿½ï¿½ï¿½$row['id']=(int)$row['id_kontak'];
 //buat array yang nantinya akan di konversi ke json
-    $row_set[] = $row;
+ï¿½ï¿½ï¿½ï¿½$row_set[] = $row;
 }
 //data hasil query yang dikirim kembali dalam format json
 echo json_encode($row_set);
